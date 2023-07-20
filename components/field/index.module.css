@@ -1,0 +1,33 @@
+.container {
+  --color: black;
+  --accent: var(--acc-4);
+  display: flex;
+  border: solid 1px var(--acc-2);
+  padding: var(--sp);
+  border-radius: var(--sp);
+  background: var(--acc-1);
+  align-items: center;
+  gap: var(--sp);
+}
+
+.icon {
+  width: var(--sp3);
+  height: var(--sp3);
+}
+
+.field {
+  background: none;
+  outline: none;
+  border: none;
+  flex-grow: 1;
+  height: 100%;
+  font-size: 1rem;
+  font-family: var(--font-mono);
+  color: var(--fg);
+}
+
+.field::placeholder,
+.icon {
+  color: var(--accent);
+  opacity: 1;
+}

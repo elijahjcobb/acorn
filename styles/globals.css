@@ -1,0 +1,82 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;700&family=Roboto+Mono&family=Space+Grotesk:wght@400;700&display=swap");
+
+:root {
+  --bg: white;
+  --fg: black;
+  --bg-rgb: 255, 255, 255;
+  --fg-rgb: 0, 0, 0;
+  --acc-1: #fafafa;
+  --acc-2: #eaeaea;
+  --acc-3: #ddd;
+  --nut: #333;
+  --acc-4: #bbb;
+  --acc-5: #777;
+  --acc-6: #444;
+  --acc-7: #222;
+  --acc-8: #1a1a1a;
+  --acc-9: #0a0a0a;
+  --pri: var(--acorn-3);
+  --sec: #e54b4b;
+  --tri: #a5b452;
+  --pri-rgb: 224, 155, 45;
+  --sec-rgb: 229, 75, 75;
+  --tri-rgb: 165, 180, 82;
+  --accorn-1: #995c0d;
+  --acorn-2: #b27214;
+  --acorn-3: #e09b2d;
+  --acorn-4: #f7b239;
+  --sp-4: calc(var(--sp) * 4);
+  --sp-2: calc(var(--sp) / 2);
+  --sp: 8px;
+  --sp2: calc(var(--sp) * 2);
+  --sp3: calc(var(--sp) * 3);
+  --sp4: calc(var(--sp) * 4);
+  --sp5: calc(var(--sp) * 5);
+  --sp6: calc(var(--sp) * 6);
+  --sp7: calc(var(--sp) * 7);
+  --sp8: calc(var(--sp) * 8);
+  --nav: 96px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  font-size: 16px;
+  height: 100%;
+  overflow: auto;
+}
+
+html {
+  font-size: var(--sp2);
+  overflow: hidden;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: black;
+    --fg: white;
+    --acc-9: #eaeaea;
+    --acc-8: #fafafa;
+    --acc-7: #ddd;
+    --acc-6: #bbb;
+    --acc-5: #777;
+    --acc-4: #444;
+    --acc-3: #222;
+    --acc-2: #1a1a1a;
+    --acc-1: #0a0a0a;
+    --fg-rgb: 255, 255, 255;
+    --bg-rgb: 0, 0, 0;
+  }
+}

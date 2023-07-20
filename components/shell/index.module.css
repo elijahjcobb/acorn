@@ -1,0 +1,16 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: flex-start;
+  background: var(--acc-1);
+}
+
+.container {
+  width: 100%;
+  background: var(--bg);
+  border: solid 1px var(--acc-2);
+  overflow: hidden;
+}

@@ -1,0 +1,81 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["interactiveTransactions"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model comment {
+  id         String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  nut_id     String   @db.Uuid
+  user_id    String   @db.Uuid
+  content    String
+  nut        nut      @relation(fields: [nut_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user       user     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model user {
+  id                                   String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at                           DateTime  @default(now()) @db.Timestamptz(6)
+  username                             String    @unique
+  name                                 String
+  password                             String
+  follow_count                         Int       @default(0)
+  follower_count                       Int       @default(0)
+  healthy                              Boolean   @default(true)
+  comment                              comment[]
+  follow_follow_followed_user_idTouser follow[]  @relation("follow_followed_user_idTouser")
+  follow_follow_user_idTouser          follow[]  @relation("follow_user_idTouser")
+  nut                                  nut[]
+  share                                share[]
+}
+
+model like {
+  created_at            DateTime @default(now()) @db.Timestamptz(6)
+  nut_id                String   @db.Uuid
+  user_id               String   @db.Uuid
+  nut_like_nut_idTonut  nut      @relation("like_nut_idTonut", fields: [nut_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  nut_like_user_idTonut nut      @relation("like_user_idTonut", fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([nut_id, user_id], map: "heart_pkey")
+}
+
+model nut {
+  id                     String    @id(map: "tick_pkey") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at             DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at             DateTime  @default(now()) @db.Timestamptz(6)
+  user_id                String    @db.Uuid
+  content                String
+  like_count             Int       @default(0)
+  comment_count          Int       @default(0)
+  share_count            Int       @default(0)
+  user                   user      @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  comment                comment[]
+  like_like_nut_idTonut  like[]    @relation("like_nut_idTonut")
+  like_like_user_idTonut like[]    @relation("like_user_idTonut")
+  share                  share[]
+}
+
+model share {
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+  nut_id     String    @db.Uuid
+  user_id    String    @db.Uuid
+  nut        nut       @relation(fields: [nut_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user       user      @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([nut_id, user_id])
+}
+
+model follow {
+  created_at                         DateTime? @default(now()) @db.Timestamptz(6)
+  followed_user_id                   String    @db.Uuid
+  user_id                            String    @db.Uuid
+  user_follow_followed_user_idTouser user      @relation("follow_followed_user_idTouser", fields: [followed_user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user_follow_user_idTouser          user      @relation("follow_user_idTouser", fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([followed_user_id, user_id])
+}

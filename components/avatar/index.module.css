@@ -1,0 +1,23 @@
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0 0 var(--sp) var(--acc-1);
+  font-family: var(--font-title);
+  border: solid 1px var(--acc-1);
+  text-transform: uppercase;
+  color: var(--bg);
+  flex-shrink: 0;
+  outline: none;
+  text-decoration: none;
+}
+
+.clickable {
+  transition: 125ms ease-in-out;
+  cursor: pointer;
+}
+
+.clickable:hover {
+  transform: scale(1.1);
+}

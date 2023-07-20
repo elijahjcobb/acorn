@@ -1,0 +1,104 @@
+.button {
+  display: flex;
+  align-items: center;
+  gap: var(--sp);
+  outline: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.background,
+.count,
+.count {
+  transition: 100ms ease-in-out;
+}
+
+.left {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.background {
+  opacity: 0;
+  background: var(--pri);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transform: scale(0.5);
+}
+
+.shareBackground {
+  background: var(--tri);
+}
+
+.icon {
+  z-index: 1;
+}
+
+.button:hover .background {
+  opacity: 0.25;
+  transform: scale(1);
+}
+
+.button:hover .count {
+  color: var(--pri);
+}
+
+.outline {
+  stroke: var(--acc-5) !important;
+  fill: var(--acc-5) !important;
+}
+
+.outlineEnabled {
+  stroke: var(--nut) !important;
+  fill: var(--nut) !important;
+}
+
+.button:hover .outline {
+  stroke: var(--pri) !important;
+  fill: var(--pri) !important;
+}
+
+.button:hover .outlineEnabled {
+  stroke: var(--nut) !important;
+  fill: var(--nut) !important;
+}
+
+.count {
+  color: var(--acc-5);
+}
+
+.countEnabled {
+  color: var(--pri);
+}
+
+.shareCount .countEnabled,
+.button:hover .shareCount {
+  color: var(--tri);
+}
+
+.shareCountEnabled {
+  color: var(--tri);
+}
+
+.shareIcon {
+  color: var(--acc-5);
+}
+
+.shareIcon {
+  color: var(--acc-5);
+}
+
+.shareIconEnabled {
+  color: var(--tri);
+}
+
+.button:hover .shareIcon {
+  color: var(--tri);
+}

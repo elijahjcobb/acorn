@@ -1,0 +1,16 @@
+.ticks {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--sp2);
+  opacity: 0;
+  animation: fadeIn 500ms ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
